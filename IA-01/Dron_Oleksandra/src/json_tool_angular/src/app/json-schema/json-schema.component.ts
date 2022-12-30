@@ -3,6 +3,7 @@ import Ajv from "ajv"
 import {MatRadioChange} from "@angular/material/radio";
 import {ToastrService} from 'ngx-toastr';
 import {JsonSchemaService} from "./service/json-schema.service";
+import {Draft07} from "json-schema-library";
 
 var parse = require('json-schema-to-markdown')
 var FileSaver = require('file-saver');
@@ -36,8 +37,6 @@ export class JsonSchemaComponent implements OnInit {
       if (jsonMode) {
         return s;
       }
-
-      console.log(flatten(value))
 
       return JSON.stringify(flatten(value), null, 2);
     } catch (e) {
@@ -166,4 +165,5 @@ export class JsonSchemaComponent implements OnInit {
         }
       });
   }
+
 }

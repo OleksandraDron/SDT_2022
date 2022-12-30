@@ -2,6 +2,8 @@
 
   <span class="mat-h1 container-fluid m-2">JsonTool</span>
   <span>
+    <button [hidden]="!user" routerLink="/" class="btn btn-primary m-2">Schema</button>
+    <button [hidden]="!user" routerLink="/validator" class="btn btn-primary m-2">Validator</button>
     <button [hidden]="user" routerLink="/login" class="btn btn-primary m-2">Login</button>
     <button [hidden]="!user" (click)="logout()" class="btn btn-primary m-2">Log out</button>
   </span>

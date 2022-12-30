@@ -26,6 +26,7 @@
     "bootstrap-icons": "^1.10.2",
     "file-saver": "^2.0.5",
     "flat": "^5.0.2",
+    "json-schema-library": "^7.4.4",
     "json-schema-to-markdown": "^1.1.1",
     "jsoneditor": "9.7",
     "ngx-highlightjs": "^7.0.1",

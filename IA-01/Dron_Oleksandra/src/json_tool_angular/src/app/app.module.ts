@@ -19,13 +19,18 @@ import {MatInputModule} from "@angular/material/input";
 import {ClipboardModule} from "@angular/cdk/clipboard";
 import {MatRadioModule} from "@angular/material/radio";
 import {MatIconModule} from "@angular/material/icon";
+import { JsonValidatorComponent } from './json-validator/json-validator.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatRippleModule} from "@angular/material/core";
+import {MatTooltipModule} from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    JsonSchemaComponent
+    JsonSchemaComponent,
+    JsonValidatorComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,10 @@ import {MatIconModule} from "@angular/material/icon";
     FormsModule,
     MatInputModule,
     ClipboardModule,
-    MatRadioModule
+    MatRadioModule,
+    MatTableModule,
+    MatRippleModule,
+    MatTooltipModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

@@ -12,10 +12,12 @@ enum ROLE {
   ROLE_ADMIN
 }
 
-export interface JsonSchema {
+export interface JsonSchemaDto {
   id: string;
   title: string;
   description: string;
   json: string;
   createdDate: Date;
+  hovered: boolean;
+  highlighted: boolean;
 }
