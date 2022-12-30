@@ -15,6 +15,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.UUID;
 
 import static com.dron.jsontool.config.utils.Constants.JsonSchema.NEXT_JSON_SCHEMA_NOT_FOUND;
@@ -85,6 +86,14 @@ public class JsonSchemaFacadeImpl implements JsonSchemaFacade {
 			return jsonSchemaMapper.toDto(iterator.next());
 		} else
 			throw new BusinessException(NEXT_JSON_SCHEMA_NOT_FOUND);
+	}
+
+	@Override
+	public List<JsonSchemaDto> findAll() {
+		return jsonSchemaService.findAllByUserId(securityService.getAuthUser().getId())
+				.stream()
+				.map(jsonSchemaMapper::toDto)
+				.toList();
 	}
 
 	private void saveHistory(UUID previousSchemaId, JsonSchema nextSchema) {

@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-
+import java.util.List;
 import java.util.UUID;
 
 import static lombok.AccessLevel.PRIVATE;
@@ -33,6 +33,12 @@ public class JsonSchemaController {
 	@GetMapping("/last")
 	public ResponseEntity<JsonSchemaDto> findLast() {
 		JsonSchemaDto response = jsonSchemaFacade.findLast();
+		return ResponseEntity.ok(response);
+	}
+
+	@GetMapping
+	public ResponseEntity<List<JsonSchemaDto>> findAll() {
+		List<JsonSchemaDto> response = jsonSchemaFacade.findAll();
 		return ResponseEntity.ok(response);
 	}
 

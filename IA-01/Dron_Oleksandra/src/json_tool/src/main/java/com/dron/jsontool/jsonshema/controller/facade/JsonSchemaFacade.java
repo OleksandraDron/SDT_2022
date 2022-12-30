@@ -2,6 +2,7 @@ package com.dron.jsontool.jsonshema.controller.facade;
 
 import com.dron.jsontool.jsonshema.controller.dto.JsonSchemaDto;
 
+import java.util.List;
 import java.util.UUID;
 
 public interface JsonSchemaFacade {
@@ -13,5 +14,7 @@ public interface JsonSchemaFacade {
 	JsonSchemaDto findPrevious(UUID id);
 
 	JsonSchemaDto findNext(UUID id);
+
+	List<JsonSchemaDto> findAll();
 
 }

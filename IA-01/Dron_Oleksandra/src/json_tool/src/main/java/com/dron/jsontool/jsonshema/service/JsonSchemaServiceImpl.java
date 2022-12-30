@@ -5,12 +5,15 @@ import com.dron.jsontool.jsonshema.repositiry.JsonSchemaRepository;
 import com.dron.jsontool.jsonshema.repositiry.entity.JsonSchema;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 import static com.dron.jsontool.config.utils.Constants.JsonSchema.JSON_SCHEMA_NOT_FOUND;
 import static lombok.AccessLevel.PRIVATE;
+import static org.springframework.data.domain.Sort.Direction.DESC;
 
 @Service
 @RequiredArgsConstructor
@@ -28,13 +31,19 @@ public class JsonSchemaServiceImpl implements JsonSchemaService {
 	public JsonSchema findLastByUserId(UUID ownerId) {
 		return jsonSchemaRepository
 				.findTopByOwnerIdOrderByCreatedDateDesc(ownerId)
-				.orElseThrow(()-> new NotFoundException(JSON_SCHEMA_NOT_FOUND));
+				.orElseThrow(() -> new NotFoundException(JSON_SCHEMA_NOT_FOUND));
 	}
 
 	@Override
 	public JsonSchema findById(UUID id) {
 		return jsonSchemaRepository
 				.findById(id)
-				.orElseThrow(()-> new NotFoundException(JSON_SCHEMA_NOT_FOUND));
+				.orElseThrow(() -> new NotFoundException(JSON_SCHEMA_NOT_FOUND));
 	}
+
+	@Override
+	public List<JsonSchema> findAllByUserId(UUID userId) {
+		return jsonSchemaRepository.findAllByOwnerId(userId, Sort.by(DESC, "createdDate"));
+	}
+
 }
