@@ -18,13 +18,13 @@ import java.util.Iterator;
 @EqualsAndHashCode(callSuper = true)
 public class JsonSchema extends BaseEntity {
 
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "TEXT")
 	String json;
 
-	@Column(nullable = false)
+	@Column(nullable = false, columnDefinition = "TEXT")
 	String title;
 
-	@Column
+	@Column(columnDefinition = "TEXT")
 	String description;
 
 	@EqualsAndHashCode.Exclude
