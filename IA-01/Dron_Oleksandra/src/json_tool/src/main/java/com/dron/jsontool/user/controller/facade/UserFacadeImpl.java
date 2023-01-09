@@ -13,9 +13,6 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-import java.util.UUID;
-
 import static com.dron.jsontool.config.utils.Constants.User.USER_ALREADY_EXISTS;
 import static com.dron.jsontool.config.utils.Constants.User.WRONG_PASSWORD;
 import static lombok.AccessLevel.PRIVATE;
@@ -31,13 +28,7 @@ public class UserFacadeImpl implements UserFacade {
 
 	UserMapper userMapper;
 
-	@Override
-	public UserDto findById(UUID id) {
-		User user = userService.findById(id);
-		return userMapper.toDto(user);
-	}
-
-	@Override
+    @Override
 	public UserDto save(UserDto userDto) {
 		try {
 			userService.findByEmail(userDto.getEmail());
@@ -52,18 +43,6 @@ public class UserFacadeImpl implements UserFacade {
 		User saved = userService.save(user);
 
 		return userMapper.toDto(saved);
-	}
-
-	@Override
-	public UserDto findByEmail(String email) {
-		User user = userService.findByEmail(email);
-		return userMapper.toDto(user);
-	}
-
-	@Override
-	public List<UserDto> findAll() {
-		List<User> all = userService.findAll();
-		return all.stream().map(userMapper::toDto).toList();
 	}
 
 	@Override
